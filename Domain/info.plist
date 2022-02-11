@@ -2,7 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key></key>
-	<string></string>
+	<key>Localization native development region</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>Executable file</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>Bundle identifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>InfoDictionary version</key>
+	<string>6.0</string>
+	<key>Bundle name</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>Bundle OS Type code</key>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>Bundle versions string, short</key>
+	<string>1.0</string>
+	<key>Bundle version</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>Copyright (human-readable)</key>
+	<string>Copyright @ 2021. All rights reserved.</string>
 </dict>
 </plist>
