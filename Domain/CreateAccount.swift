@@ -14,7 +14,7 @@ public protocol CreateAccount {
     func create(account: CreateAccountModel, completion: @escaping CreateAccountCompletion)
 }
 
-public struct CreateAccountModel: Encodable {
+public struct CreateAccountModel: Model {
     
     public var name: String
     public var email: String

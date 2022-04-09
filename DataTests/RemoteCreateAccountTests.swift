@@ -20,8 +20,7 @@ class RemoteCreateAccount {
     }
     
     func create(createAccountModel: CreateAccountModel) {
-        let data = try? JSONEncoder().encode(createAccountModel)
-        httpClientPost.post(to: url, with: data)
+        httpClientPost.post(to: url, with: createAccountModel.toData())
     }
 }
  
@@ -40,10 +39,11 @@ class RemoteCreateAccountTests: XCTestCase {
     
     func test_create_should_call_httpClentPost_with_correct_data() {
         // System under test
+
         let (sut, httpClientSpy) = makeSut()
-        sut.create(createAccountModel: makeCreateAccountModel())
-        let data = try? JSONEncoder().encode(makeCreateAccountModel())
-        XCTAssertEqual(httpClientSpy.data, data)
+        let createAccountModel = makeCreateAccountModel()
+        sut.create(createAccountModel: createAccountModel)
+        XCTAssertEqual(httpClientSpy.data, createAccountModel.toData())
     }
 }
 
