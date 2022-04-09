@@ -36,8 +36,7 @@ class RemoteCreateAccountTests: XCTestCase {
         // System under test
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteCreateAccount(url: url, httpClientPost: httpClientSpy)
-        let createAccountModel = CreateAccountModel(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password_confirmation")
-        sut.create(createAccountModel: createAccountModel)
+        sut.create(createAccountModel: makeCreateAccountModel())
         XCTAssertEqual(httpClientSpy.url, url)
     }
     
@@ -45,14 +44,17 @@ class RemoteCreateAccountTests: XCTestCase {
         // System under test
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteCreateAccount(url: URL(string: "http://url.com")!, httpClientPost: httpClientSpy)
-        let createAccountModel = CreateAccountModel(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password_confirmation")
-        sut.create(createAccountModel: createAccountModel)
-        let data = try? JSONEncoder().encode(createAccountModel)
+        sut.create(createAccountModel: makeCreateAccountModel())
+        let data = try? JSONEncoder().encode(makeCreateAccountModel())
         XCTAssertEqual(httpClientSpy.data, data)
     }
 }
 
 extension RemoteCreateAccountTests {
+    
+    func makeCreateAccountModel() -> CreateAccountModel {
+        return CreateAccountModel(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password_confirmation")
+    }
     
     class HttpClientSpy: HttpClientPost {
         
