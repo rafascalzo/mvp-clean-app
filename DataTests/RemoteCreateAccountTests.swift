@@ -6,27 +6,8 @@
 //
 
 import XCTest
-// @testable import Data
+import Data
 import Domain
-
-class RemoteCreateAccount {
-    
-    private let url: URL
-    private let httpClientPost: HttpClientPost
-    
-    init (url: URL, httpClientPost: HttpClientPost) {
-        self.url = url
-        self.httpClientPost = httpClientPost
-    }
-    
-    func create(createAccountModel: CreateAccountModel) {
-        httpClientPost.post(to: url, with: createAccountModel.toData())
-    }
-}
- 
-protocol HttpClientPost {
-    func post(to url: URL, with data: Data?)
-}
 
 class RemoteCreateAccountTests: XCTestCase {
 
@@ -39,7 +20,6 @@ class RemoteCreateAccountTests: XCTestCase {
     
     func test_create_should_call_httpClentPost_with_correct_data() {
         // System under test
-
         let (sut, httpClientSpy) = makeSut()
         let createAccountModel = makeCreateAccountModel()
         sut.create(createAccountModel: createAccountModel)
