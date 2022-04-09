@@ -12,20 +12,19 @@ import XCTest
 class RemoteCreateAccount {
     
     private let url: URL
-    private let httpClient: HttpClient
+    private let httpClientPost: HttpClientPost
     
-    init (url: URL, httpClient: HttpClient) {
+    init (url: URL, httpClientPost: HttpClientPost) {
         self.url = url
-        self.httpClient = httpClient
+        self.httpClientPost = httpClientPost
     }
     
     func create() {
-        httpClient.post(url: url)
+        httpClientPost.post(url: url)
     }
 }
-
-protocol HttpClient {
-     
+ 
+protocol HttpClientPost {
     func post(url: URL)
 }
 
@@ -36,13 +35,13 @@ class RemoteCreateAccountTests: XCTestCase {
         let url = URL(string: "http://url.com")!
         // System under test
         let httpClientSpy = HttpClientSpy()
-        let sut = RemoteCreateAccount(url: url, httpClient: httpClientSpy)
+        let sut = RemoteCreateAccount(url: url, httpClientPost: httpClientSpy)
         sut.create()
         XCTAssertEqual(httpClientSpy.url, url)
         
     }
     
-    class HttpClientSpy: HttpClient {
+    class HttpClientSpy: HttpClientPost {
         
         var url: URL?
         
