@@ -31,14 +31,13 @@ protocol HttpClientPost {
 class RemoteCreateAccountTests: XCTestCase {
 
    
-    func testUrl() {
+    func test_create_should_call_httpClentPost_with_correct_url() {
         let url = URL(string: "http://url.com")!
         // System under test
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteCreateAccount(url: url, httpClientPost: httpClientSpy)
         sut.create()
         XCTAssertEqual(httpClientSpy.url, url)
-        
     }
     
     class HttpClientSpy: HttpClientPost {
