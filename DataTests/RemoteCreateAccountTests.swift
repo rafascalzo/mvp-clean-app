@@ -30,7 +30,6 @@ protocol HttpClientPost {
 
 class RemoteCreateAccountTests: XCTestCase {
 
-   
     func test_create_should_call_httpClentPost_with_correct_url() {
         let url = URL(string: "http://url.com")!
         // System under test
@@ -39,6 +38,9 @@ class RemoteCreateAccountTests: XCTestCase {
         sut.create()
         XCTAssertEqual(httpClientSpy.url, url)
     }
+}
+
+extension RemoteCreateAccountTests {
     
     class HttpClientSpy: HttpClientPost {
         
@@ -48,5 +50,4 @@ class RemoteCreateAccountTests: XCTestCase {
             self.url = url
         }
     }
-
 }
