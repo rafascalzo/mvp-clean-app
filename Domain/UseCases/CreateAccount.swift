@@ -7,7 +7,7 @@
 
 import Foundation
 
-public typealias CreateAccountCompletion = (Result<AccountModel, Error>) -> Void
+public typealias CreateAccountCompletion = (Result<AccountModel, DomainError>) -> Void
 
 public protocol CreateAccount {
     
