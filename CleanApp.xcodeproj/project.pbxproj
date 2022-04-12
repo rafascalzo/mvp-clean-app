@@ -10,6 +10,8 @@
 		C53ACBFA280127E5002F5D56 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBF9280127E5002F5D56 /* Model.swift */; };
 		C53ACBFC2801297D002F5D56 /* RemoteCreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBFB2801297D002F5D56 /* RemoteCreateAccount.swift */; };
 		C53ACBFE28012A11002F5D56 /* HttpClientPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBFD28012A11002F5D56 /* HttpClientPost.swift */; };
+		C53ACC0628063100002F5D56 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACC0528063100002F5D56 /* DomainError.swift */; };
+		C53ACC08280633F5002F5D56 /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACC07280633F5002F5D56 /* HttpError.swift */; };
 		FB6C5CA127B6230200A1FE9E /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB6C5CA027B6230200A1FE9E /* info.plist */; };
 		FB6C5CA327B6250E00A1FE9E /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C5CA227B6250E00A1FE9E /* CreateAccount.swift */; };
 		FB6C5CA527B6277A00A1FE9E /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C5CA427B6277A00A1FE9E /* AccountModel.swift */; };
@@ -56,6 +58,8 @@
 		C53ACBF9280127E5002F5D56 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C53ACBFB2801297D002F5D56 /* RemoteCreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCreateAccount.swift; sourceTree = "<group>"; };
 		C53ACBFD28012A11002F5D56 /* HttpClientPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientPost.swift; sourceTree = "<group>"; };
+		C53ACC0528063100002F5D56 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
+		C53ACC07280633F5002F5D56 /* HttpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
 		FB6C5C9927B6042500A1FE9E /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6C5CA027B6230200A1FE9E /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		FB6C5CA227B6250E00A1FE9E /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				C53ACBFD28012A11002F5D56 /* HttpClientPost.swift */,
+				C53ACC07280633F5002F5D56 /* HttpError.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -132,6 +137,14 @@
 				FB6C5CB927B6291900A1FE9E /* RemoteCreateAccountTests.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		C53ACC04280630E6002F5D56 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				C53ACC0528063100002F5D56 /* DomainError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		FB6C5C6827B602F000A1FE9E = {
@@ -158,6 +171,7 @@
 		FB6C5C9A27B6042500A1FE9E /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				C53ACC04280630E6002F5D56 /* Errors */,
 				C53ACC0028012C25002F5D56 /* Models */,
 				C53ACBFF28012C1A002F5D56 /* UseCases */,
 				FB6C5CA027B6230200A1FE9E /* info.plist */,
@@ -343,6 +357,7 @@
 			files = (
 				C53ACBFA280127E5002F5D56 /* Model.swift in Sources */,
 				FB6C5CA327B6250E00A1FE9E /* CreateAccount.swift in Sources */,
+				C53ACC0628063100002F5D56 /* DomainError.swift in Sources */,
 				FB6C5CA527B6277A00A1FE9E /* AccountModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C53ACBFE28012A11002F5D56 /* HttpClientPost.swift in Sources */,
+				C53ACC08280633F5002F5D56 /* HttpError.swift in Sources */,
 				C53ACBFC2801297D002F5D56 /* RemoteCreateAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
