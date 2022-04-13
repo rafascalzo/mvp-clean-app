@@ -47,12 +47,27 @@ class RemoteCreateAccountTests: XCTestCase {
         sut.create(account: makeCreateAccountModel()) { result in
             switch result {
             case .success(let receivedAccount): XCTAssertEqual(receivedAccount, expectedAccount)
-            default: XCTFail("Expected error but received \(result) instead")
+            case .failure: XCTFail("Expected success but received \(result) instead")
             }
             exp.fulfill()
         }
         httpClientSpy.completeWithData(expectedAccount.toData()!)
         wait(for: [exp], timeout: 1)
+    }
+    
+    func test_create_should_complete_with_error_if_client_completes_with_invalid_data() {
+        let (sut, httpClientSpy) = makeSut()
+        let exp = expectation(description:  "waiting")
+        sut.create(account: makeCreateAccountModel()) { result in
+            switch result {
+            case .failure(let error): XCTAssertEqual(error, .unexpected)
+            case .success: XCTFail("Expected error but received \(result) instead")
+            }
+            exp.fulfill()
+        }
+        httpClientSpy.completeWithData(Data("invalid_data".utf8))
+        wait(for: [exp], timeout: 1)
+        
     }
 }
 
