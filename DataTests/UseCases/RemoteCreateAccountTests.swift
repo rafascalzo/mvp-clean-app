@@ -70,20 +70,6 @@ extension RemoteCreateAccountTests {
         return (sut, httpClientSpy)
     }
     
-    func checkMemoryLeak(for instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, file: file, line: line)
-        }
-    }
-    
-    func makeCreateAccountModel() -> CreateAccountModel {
-        return CreateAccountModel(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password_confirmation")
-    }
-    
-    func makeAccountModel() -> AccountModel {
-        return AccountModel("any_id", name: "any_name", email: "any_email", password: "any_password")
-    }
-    
     func expect(_ sut: RemoteCreateAccount, completeWith expectedResult: Result<AccountModel, DomainError>, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "waiting")
         sut.create(account: makeCreateAccountModel()) { receivedResult in
@@ -98,34 +84,7 @@ extension RemoteCreateAccountTests {
         wait(for: [exp], timeout: 1)
     }
     
-    func makeInvalidData() -> Data {
-        return Data("invalid_data".utf8)
-    }
-    
-    func makeUrl() -> URL {
-        return URL(string: "http://url.com")!
-    }
-    
-    class HttpClientSpy: HttpClientPost {
-        
-        init() { }
-        
-        var urls = [URL]()
-        var data: Data?
-        var completion: ((Result<Data, HttpError>) -> Void)?
-        
-        func post(to url: URL, with data: Data?, completion: @escaping (Result<Data, HttpError>) -> Void) {
-            self.urls.append(url)
-            self.data = data
-            self.completion = completion
-        }
-        
-        func completeWithError(_ error: HttpError) {
-            completion?(.failure(error))
-        }
-        
-        func completeWithData(_ data: Data) {
-            completion?(.success(data))
-        }
+    func makeCreateAccountModel() -> CreateAccountModel {
+        return CreateAccountModel(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password_confirmation")
     }
 }
