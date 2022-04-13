@@ -51,10 +51,17 @@ class RemoteCreateAccountTests: XCTestCase {
 
 extension RemoteCreateAccountTests {
     
-    func makeSut(url: URL = URL(string: "http://url.com")!) -> (RemoteCreateAccount, HttpClientSpy) {
+    func makeSut(url: URL = URL(string: "http://url.com")!, file: StaticString = #file, line: UInt = #line) -> (RemoteCreateAccount, HttpClientSpy) {
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteCreateAccount(url: url, httpClientPost: httpClientSpy)
+        checkMemoryLeak(for: sut)
         return (sut, httpClientSpy)
+    }
+    
+    func checkMemoryLeak(for instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, file: file, line: line)
+        }
     }
     
     func makeCreateAccountModel() -> CreateAccountModel {
@@ -65,13 +72,13 @@ extension RemoteCreateAccountTests {
         return AccountModel("any_id", name: "any_name", email: "any_email", password: "any_password")
     }
     
-    func expect(_ sut: RemoteCreateAccount, completeWith expectedResult: Result<AccountModel, DomainError>, when action: () -> Void) {
-        let exp = expectation(description:  "waiting")
+    func expect(_ sut: RemoteCreateAccount, completeWith expectedResult: Result<AccountModel, DomainError>, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "waiting")
         sut.create(account: makeCreateAccountModel()) { receivedResult in
             switch (expectedResult, receivedResult) {
-            case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError)
-            case (.success(let expectedAccount), .success(let receivedAccount)): XCTAssertEqual(expectedAccount, receivedAccount)
-            default: XCTFail("Expected error but received")
+            case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError, file: file, line: line)
+            case (.success(let expectedAccount), .success(let receivedAccount)): XCTAssertEqual(expectedAccount, receivedAccount, file: file, line: line)
+            default: XCTFail("Expected \(expectedResult) but received \(receivedResult) instead")
             }
             exp.fulfill()
         }
