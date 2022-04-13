@@ -19,7 +19,8 @@ public final class RemoteCreateAccount: CreateAccount {
     }
     
     public func create(account createAccountModel: CreateAccountModel, completion: @escaping (Result<AccountModel, DomainError>) -> Void) {
-        httpClientPost.post(to: url, with: createAccountModel.toData()) { result in
+        httpClientPost.post(to: url, with: createAccountModel.toData()) { [weak self] result in
+            guard self != nil else { return }
             switch result {
             case .success(let data):
                 if let model: AccountModel = data.toModel() {

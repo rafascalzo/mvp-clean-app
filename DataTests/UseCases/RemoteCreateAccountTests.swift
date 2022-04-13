@@ -47,6 +47,17 @@ class RemoteCreateAccountTests: XCTestCase {
             httpClientSpy.completeWithData(makeInvalidData())
         })
     }
+    
+    func test_create_should_not_complete_if_sut_has_been_deallocated() {
+        let httpClientSpy = HttpClientSpy()
+        var sut: RemoteCreateAccount? = RemoteCreateAccount(url: makeUrl(), httpClientPost: httpClientSpy)
+        var result: (Result<AccountModel, DomainError>)?
+        sut?.create(account: makeCreateAccountModel(), completion: { result = $0
+        })
+        sut = nil
+        httpClientSpy.completeWithError(.noConnectivity)
+        XCTAssertNil(result)
+    }
 }
 
 extension RemoteCreateAccountTests {
@@ -54,7 +65,8 @@ extension RemoteCreateAccountTests {
     func makeSut(url: URL = URL(string: "http://url.com")!, file: StaticString = #file, line: UInt = #line) -> (RemoteCreateAccount, HttpClientSpy) {
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteCreateAccount(url: url, httpClientPost: httpClientSpy)
-        checkMemoryLeak(for: sut)
+        checkMemoryLeak(for: sut, file: file, line: line)
+        checkMemoryLeak(for: httpClientSpy, file: file, line: line)
         return (sut, httpClientSpy)
     }
     
