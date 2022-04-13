@@ -12,7 +12,7 @@ import Domain
 class RemoteCreateAccountTests: XCTestCase {
     
     func test_create_should_call_httpClentPost_with_correct_url() {
-        let url = URL(string: "http://url.com")!
+        let url = makeUrl()
         let (sut, httpClientSpy) = makeSut(url: url)
         sut.create(account: makeCreateAccountModel()) { _ in }
         XCTAssertEqual(httpClientSpy.urls, [url])
@@ -51,14 +51,18 @@ class RemoteCreateAccountTests: XCTestCase {
 
 extension RemoteCreateAccountTests {
     
-    func makeInvalidData() -> Data {
-        return Data("invalid_data".utf8)
-    }
-    
     func makeSut(url: URL = URL(string: "http://url.com")!) -> (RemoteCreateAccount, HttpClientSpy) {
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteCreateAccount(url: url, httpClientPost: httpClientSpy)
         return (sut, httpClientSpy)
+    }
+    
+    func makeCreateAccountModel() -> CreateAccountModel {
+        return CreateAccountModel(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password_confirmation")
+    }
+    
+    func makeAccountModel() -> AccountModel {
+        return AccountModel("any_id", name: "any_name", email: "any_email", password: "any_password")
     }
     
     func expect(_ sut: RemoteCreateAccount, completeWith expectedResult: Result<AccountModel, DomainError>, when action: () -> Void) {
@@ -75,12 +79,12 @@ extension RemoteCreateAccountTests {
         wait(for: [exp], timeout: 1)
     }
     
-    func makeCreateAccountModel() -> CreateAccountModel {
-        return CreateAccountModel(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password_confirmation")
+    func makeInvalidData() -> Data {
+        return Data("invalid_data".utf8)
     }
     
-    func makeAccountModel() -> AccountModel {
-        return AccountModel("any_id", name: "any_name", email: "any_email", password: "any_password")
+    func makeUrl() -> URL {
+        return URL(string: "http://url.com")!
     }
     
     class HttpClientSpy: HttpClientPost {
