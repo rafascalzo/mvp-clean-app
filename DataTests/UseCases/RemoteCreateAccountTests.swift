@@ -39,7 +39,21 @@ class RemoteCreateAccountTests: XCTestCase {
         httpClientSpy.completeWithError(.noConnectivity)
         wait(for: [exp], timeout: 1)
     }
-
+    
+    func test_create_should_complete_with_account_if_client_completes_with_data() {
+        let (sut, httpClientSpy) = makeSut()
+        let exp = expectation(description: "waiting")
+        let expectedAccount = makeAccountModel()
+        sut.create(account: makeCreateAccountModel()) { result in
+            switch result {
+            case .success(let receivedAccount): XCTAssertEqual(receivedAccount, expectedAccount)
+            default: XCTFail("Expected error but received \(result) instead")
+            }
+            exp.fulfill()
+        }
+        httpClientSpy.completeWithData(expectedAccount.toData()!)
+        wait(for: [exp], timeout: 1)
+    }
 }
 
 extension RemoteCreateAccountTests {
@@ -53,6 +67,10 @@ extension RemoteCreateAccountTests {
     
     func makeCreateAccountModel() -> CreateAccountModel {
         return CreateAccountModel(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password_confirmation")
+    }
+    
+    func makeAccountModel() -> AccountModel {
+        return AccountModel("any_id", name: "any_name", email: "any_email", password: "any_password")
     }
     
     class HttpClientSpy: HttpClientPost {
@@ -71,6 +89,10 @@ extension RemoteCreateAccountTests {
         
         func completeWithError(_ error: HttpError) {
             completion?(.failure(error))
+        }
+        
+        func completeWithData(_ data: Data) {
+            completion?(.success(data))
         }
     }
 }
