@@ -72,13 +72,13 @@ extension AlamofireAdapterTests {
     
     func testRequest(url: URL = makeUrl(), data: Data? = nil, action: @escaping (URLRequest) -> Void) {
         let sut = makeSut()
-        sut.post(to: url, with: data) { _ in }
         let exp = expectation(description: "waiting")
-        URLProtocolStub.observerRequest { request in
-            action(request)
-            exp.fulfill()
+        sut.post(to: url, with: data) { _ in exp.fulfill() }
+        var request: URLRequest?
+        URLProtocolStub.observerRequest { request = $0
         }
         wait(for: [exp], timeout: 1)
+        action(request!)
     }
 }
 
