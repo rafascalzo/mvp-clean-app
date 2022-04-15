@@ -34,6 +34,8 @@ public final class SignUpPresenter {
             throw ValidationError.required_password
         } else if viewModel.passwordConfirmation == nil || viewModel.passwordConfirmation?.isEmpty ?? true {
             throw ValidationError.required_password_confirmation
+        } else if viewModel.password != viewModel.passwordConfirmation {
+            throw ValidationError.password_not_match
         }
     }
 }
@@ -55,7 +57,7 @@ public struct SignUpViewModel {
 
 enum ValidationError: LocalizedError {
     
-    case required_name, required_email, required_password, required_password_confirmation
+    case required_name, required_email, required_password, required_password_confirmation, password_not_match
     
     var message: String {
         switch self {
@@ -63,6 +65,7 @@ enum ValidationError: LocalizedError {
         case .required_email: return "Email is required"
         case .required_password: return "Password is required"
         case .required_password_confirmation: return "Password confirmation is required"
+        case .password_not_match: return "Password not match"
         }
     }
 }
