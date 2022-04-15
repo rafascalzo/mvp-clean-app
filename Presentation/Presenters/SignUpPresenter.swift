@@ -10,9 +10,11 @@ import Foundation
 public final class SignUpPresenter {
     
     private let alertView: AlertView
+    private let emailValidator: EmailValidator
     
-    public init(alertView: AlertView) {
+    public init(alertView: AlertView, emailValidator: EmailValidator) {
         self.alertView = alertView
+        self.emailValidator = emailValidator
     }
     
     public func signUp(viewModel: SignUpViewModel) {
@@ -37,6 +39,7 @@ public final class SignUpPresenter {
         } else if viewModel.password != viewModel.passwordConfirmation {
             throw ValidationError.password_not_match
         }
+        _ = emailValidator.isValid(email: viewModel.email!)
     }
 }
 

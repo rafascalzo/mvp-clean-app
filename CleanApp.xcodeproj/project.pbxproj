@@ -36,6 +36,7 @@
 		C580CA19280A151E00EB834B /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB6C5C9927B6042500A1FE9E /* Domain.framework */; };
 		C580CA1A280A151E00EB834B /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB6C5C9927B6042500A1FE9E /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C580CA1F280A158200EB834B /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C580CA1E280A158200EB834B /* AlertView.swift */; };
+		C580CA22280A1C2A00EB834B /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C580CA21280A1C2A00EB834B /* EmailValidator.swift */; };
 		FB6C5CA127B6230200A1FE9E /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB6C5CA027B6230200A1FE9E /* info.plist */; };
 		FB6C5CA327B6250E00A1FE9E /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C5CA227B6250E00A1FE9E /* CreateAccount.swift */; };
 		FB6C5CA527B6277A00A1FE9E /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C5CA427B6277A00A1FE9E /* AccountModel.swift */; };
@@ -174,6 +175,7 @@
 		C580CA0C2809FB9200EB834B /* SignUpPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenterTests.swift; sourceTree = "<group>"; };
 		C580CA17280A14EB00EB834B /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		C580CA1E280A158200EB834B /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		C580CA21280A1C2A00EB834B /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
 		FB6C5C9927B6042500A1FE9E /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6C5CA027B6230200A1FE9E /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		FB6C5CA227B6250E00A1FE9E /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 		C580C9FF2809FB9200EB834B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C580CA20280A1C1900EB834B /* Validators */,
 				C580CA16280A145E00EB834B /* Views */,
 				C580CA15280A145400EB834B /* Presenters */,
 				C580CA012809FB9200EB834B /* Presentation.docc */,
@@ -409,6 +412,14 @@
 				C580CA1E280A158200EB834B /* AlertView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C580CA20280A1C1900EB834B /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				C580CA21280A1C2A00EB834B /* EmailValidator.swift */,
+			);
+			path = Validators;
 			sourceTree = "<group>";
 		};
 		FB6C5C6827B602F000A1FE9E = {
@@ -833,6 +844,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C580CA18280A14EB00EB834B /* SignUpPresenter.swift in Sources */,
+				C580CA22280A1C2A00EB834B /* EmailValidator.swift in Sources */,
 				C580CA022809FB9200EB834B /* Presentation.docc in Sources */,
 				C580CA1F280A158200EB834B /* AlertView.swift in Sources */,
 			);
