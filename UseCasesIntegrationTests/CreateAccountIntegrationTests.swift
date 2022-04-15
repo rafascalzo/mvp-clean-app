@@ -28,6 +28,6 @@ class CreateAccountIntegrationTests: XCTestCase {
             }
             exp.fulfill()
         }
-        wait(for: [exp], timeout: 15)
+        wait(for: [exp], timeout: 5)
     }
 }
