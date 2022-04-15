@@ -19,8 +19,9 @@ class AlamofireAdapter {
     
     func post(to url: URL, with data: Data?, completion: @escaping (Result<Data, HttpError>) -> Void) {
         session.request(url, method: .post, parameters: data?.toJson(), encoding: JSONEncoding.default).responseData { dataResponse in
+            guard dataResponse.response?.statusCode != nil else { return completion(.failure(.noConnectivity))}
             switch dataResponse.result {
-            case .success: break
+            case .success(let data): completion(.success(data))
             case .failure: completion(.failure(.noConnectivity))
             }
         }
@@ -28,7 +29,7 @@ class AlamofireAdapter {
 }
 
 class AlamofireAdapterTests: XCTestCase {
-
+    
     func test_post_should_make_request_with_valid_url_and_method() {
         let url = makeUrl()
         testRequest(url: url, data: makeValidData()) { request in
@@ -44,18 +45,18 @@ class AlamofireAdapterTests: XCTestCase {
         }
     }
     
+    
     func test_post_should_complete_with_error_if_request_completes_with_error() {
-        let sut = makeSut()
-        URLProtocolStub.simulate(data: nil, response: nil, error: makeError())
-        let exp = expectation(description: "waiting")
-        sut.post(to: makeUrl(), with: makeValidData()) { result in
-            switch result {
-            case .success(_): XCTFail("Expected error but received \(result) instead")
-            case .failure(let error): XCTAssertEqual(error, .noConnectivity)
-            }
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1)
+        expectResult((.failure(.noConnectivity)), when: (data: nil, response: nil, error: makeError()))
+    }
+    
+    func test_post_should_complete_with_error_on_all_invalid_cases() {
+        expectResult(.failure(.noConnectivity), when: (data: makeValidData(), response: makeHttpResponse(), error: makeError()))
+        expectResult(.failure(.noConnectivity), when: (data: makeValidData(), response: nil, error: makeError()))
+        expectResult(.failure(.noConnectivity), when: (data: makeValidData(), response: nil, error: nil))
+        expectResult(.failure(.noConnectivity), when: (data: nil, response: makeHttpResponse(), error: makeError()))
+        expectResult(.failure(.noConnectivity), when: (data: nil, response: makeHttpResponse(), error: nil))
+        expectResult(.failure(.noConnectivity), when: (data: nil, response: nil, error: nil))
     }
 }
 
@@ -75,10 +76,24 @@ extension AlamofireAdapterTests {
         let exp = expectation(description: "waiting")
         sut.post(to: url, with: data) { _ in exp.fulfill() }
         var request: URLRequest?
-        URLProtocolStub.observerRequest { request = $0
-        }
+        URLProtocolStub.observerRequest { request = $0 }
         wait(for: [exp], timeout: 1)
         action(request!)
+    }
+    
+    func expectResult(_ expectedResult: Result<Data, HttpError>, when stub: (data: Data?, response: HTTPURLResponse?, error: Error?), file: StaticString = #file, line: UInt = #line) {
+        let sut = makeSut()
+        URLProtocolStub.simulate(data: stub.data, response: stub.response, error: stub.error)
+        let exp = expectation(description: "waiting")
+        sut.post(to: makeUrl(), with: makeValidData()) { receivedResult in
+            switch (expectedResult, receivedResult) {
+            case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError, file: file, line: line)
+            case (.success(let expectedData), .success(let receivedData)): XCTAssertEqual(expectedData, receivedData, file: file, line: line)
+            default: XCTFail("Expected \(expectedResult) but got \(receivedResult) instead")
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1)
     }
 }
 
@@ -102,7 +117,7 @@ class URLProtocolStub: URLProtocol {
     override open class func canInit(with request: URLRequest) -> Bool {
         return true
     }
-
+    
     override open class func canonicalRequest(for request: URLRequest) -> URLRequest {
         return request
     }
