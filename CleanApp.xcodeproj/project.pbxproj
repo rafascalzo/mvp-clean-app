@@ -25,6 +25,8 @@
 		C53ACC38280712AC002F5D56 /* XCTestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACC0E2806FE23002F5D56 /* XCTestExtensions.swift */; };
 		C53ACC3A280712B9002F5D56 /* TestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACC132806FF37002F5D56 /* TestFactories.swift */; };
 		C53ACC3D280713D5002F5D56 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C53ACC3C280713D5002F5D56 /* Alamofire */; };
+		C53ACC40280909D3002F5D56 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACC3F280909D3002F5D56 /* AlamofireAdapter.swift */; };
+		C53ACC4428090A9B002F5D56 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACC4328090A9B002F5D56 /* URLProtocolStub.swift */; };
 		FB6C5CA127B6230200A1FE9E /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB6C5CA027B6230200A1FE9E /* info.plist */; };
 		FB6C5CA327B6250E00A1FE9E /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C5CA227B6250E00A1FE9E /* CreateAccount.swift */; };
 		FB6C5CA527B6277A00A1FE9E /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C5CA427B6277A00A1FE9E /* AccountModel.swift */; };
@@ -107,6 +109,8 @@
 		C53ACC1F28071153002F5D56 /* Infra.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Infra.docc; sourceTree = "<group>"; };
 		C53ACC2528071154002F5D56 /* InfraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C53ACC2A28071154002F5D56 /* AlamofireAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapterTests.swift; sourceTree = "<group>"; };
+		C53ACC3F280909D3002F5D56 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
+		C53ACC4328090A9B002F5D56 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		FB6C5C9927B6042500A1FE9E /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6C5CA027B6230200A1FE9E /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		FB6C5CA227B6250E00A1FE9E /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
@@ -248,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				C53ACC1F28071153002F5D56 /* Infra.docc */,
+				C53ACC4228090A74002F5D56 /* Http */,
 			);
 			path = Infra;
 			sourceTree = "<group>";
@@ -255,9 +260,26 @@
 		C53ACC2928071154002F5D56 /* InfraTests */ = {
 			isa = PBXGroup;
 			children = (
-				C53ACC2A28071154002F5D56 /* AlamofireAdapterTests.swift */,
+				C53ACC4128090A0E002F5D56 /* Http */,
 			);
 			path = InfraTests;
+			sourceTree = "<group>";
+		};
+		C53ACC4128090A0E002F5D56 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				C53ACC2A28071154002F5D56 /* AlamofireAdapterTests.swift */,
+				C53ACC4328090A9B002F5D56 /* URLProtocolStub.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		C53ACC4228090A74002F5D56 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				C53ACC3F280909D3002F5D56 /* AlamofireAdapter.swift */,
+			);
+			path = Http;
 			sourceTree = "<group>";
 		};
 		FB6C5C6827B602F000A1FE9E = {
@@ -549,6 +571,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C53ACC40280909D3002F5D56 /* AlamofireAdapter.swift in Sources */,
 				C53ACC2028071154002F5D56 /* Infra.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -560,6 +583,7 @@
 				C53ACC3A280712B9002F5D56 /* TestFactories.swift in Sources */,
 				C53ACC38280712AC002F5D56 /* XCTestExtensions.swift in Sources */,
 				C53ACC2B28071154002F5D56 /* AlamofireAdapterTests.swift in Sources */,
+				C53ACC4428090A9B002F5D56 /* URLProtocolStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +708,7 @@
 		C53ACC3128071154002F5D56 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -700,6 +725,7 @@
 		C53ACC3228071154002F5D56 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
