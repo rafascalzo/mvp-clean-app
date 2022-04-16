@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C5068862280B751D00E658B9 /* XCTestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACC0E2806FE23002F5D56 /* XCTestExtensions.swift */; };
 		C5068864280B7A0A00E658B9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5068863280B7A0A00E658B9 /* LoadingView.swift */; };
+		C5068867280B85A200E658B9 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5068866280B85A200E658B9 /* SignUpViewModel.swift */; };
 		C53ACBFA280127E5002F5D56 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBF9280127E5002F5D56 /* Model.swift */; };
 		C53ACBFC2801297D002F5D56 /* RemoteCreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBFB2801297D002F5D56 /* RemoteCreateAccount.swift */; };
 		C53ACBFE28012A11002F5D56 /* HttpClientPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBFD28012A11002F5D56 /* HttpClientPost.swift */; };
@@ -155,6 +156,7 @@
 
 /* Begin PBXFileReference section */
 		C5068863280B7A0A00E658B9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		C5068866280B85A200E658B9 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		C53ACBF9280127E5002F5D56 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C53ACBFB2801297D002F5D56 /* RemoteCreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCreateAccount.swift; sourceTree = "<group>"; };
 		C53ACBFD28012A11002F5D56 /* HttpClientPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientPost.swift; sourceTree = "<group>"; };
@@ -258,6 +260,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C5068865280B858A00E658B9 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				C580CA17280A14EB00EB834B /* SignUpPresenter.swift */,
+				C5068866280B85A200E658B9 /* SignUpViewModel.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		C53ACBFF28012C1A002F5D56 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,7 +416,7 @@
 		C580CA15280A145400EB834B /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				C580CA17280A14EB00EB834B /* SignUpPresenter.swift */,
+				C5068865280B858A00E658B9 /* SignUp */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -852,6 +863,7 @@
 				C580CA22280A1C2A00EB834B /* EmailValidator.swift in Sources */,
 				C580CA022809FB9200EB834B /* Presentation.docc in Sources */,
 				C5068864280B7A0A00E658B9 /* LoadingView.swift in Sources */,
+				C5068867280B85A200E658B9 /* SignUpViewModel.swift in Sources */,
 				C580CA1F280A158200EB834B /* AlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

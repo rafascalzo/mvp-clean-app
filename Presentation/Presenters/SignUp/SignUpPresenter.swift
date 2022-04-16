@@ -61,21 +61,6 @@ public final class SignUpPresenter {
     }
 }
 
-public struct SignUpViewModel {
-    
-    public var name: String?
-    public var email: String?
-    public var password: String?
-    public var passwordConfirmation: String?
-    
-    public init(name: String? = nil, email: String? = nil, password: String? = nil, passwordConfirmation: String? = nil) {
-        self.name = name
-        self.email = email
-        self.password = password
-        self.passwordConfirmation = passwordConfirmation
-    }
-}
-
 enum ValidationError: LocalizedError {
     
     case required_name, required_email, required_password, required_password_confirmation, password_not_match, invalid_email
