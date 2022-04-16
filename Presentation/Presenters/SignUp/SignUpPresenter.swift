@@ -31,9 +31,8 @@ public final class SignUpPresenter {
         } catch {
             return
         }
-        let createAccountModel = CreateAccountModel(name: viewModel.name!, email: viewModel.email!, password: viewModel.password!, passwordConfirmation: viewModel.passwordConfirmation!)
         loadingView.display(viewModel: LoadingViewModel(isLoading: true))
-        createAccount.create(account: createAccountModel) {[weak self] result in
+        createAccount.create(account: SignUpMapper.mapToCreateAccountModel(viewModel: viewModel)) {[weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure: self.alertView.showMessage(viewModel: AlertViewModel(title: "Error", message: "Something goes wrong"))
