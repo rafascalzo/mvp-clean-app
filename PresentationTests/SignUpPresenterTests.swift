@@ -115,6 +115,20 @@ class SignUpPresenterTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
     
+    func test_signup_should_show_success_message_if_create_account_succeeds() {
+        let alertViewSpy = AlertViewSpy()
+        let createAccountSpy = CreateAccountSpy()
+        let sut = makeSut(alertView: alertViewSpy, createAccount: createAccountSpy)
+        let exp = expectation(description: "waiting")
+        alertViewSpy.observe { viewModel in
+            XCTAssertEqual(viewModel, AlertViewModel(title: "Success", message: "Cheers! Account created"))
+            exp.fulfill()
+        }
+        sut.signUp(viewModel: makeSignUpViewModel())
+        createAccountSpy.completeWithAccount(makeAccountModel())
+        wait(for: [exp], timeout: 1)
+    }
+    
     func test_signup_should_show_loading_before_and_after_call_create_account() {
         let loadingViewSpy = LoadingViewSpy()
         let createAccountSpy = CreateAccountSpy()
@@ -169,6 +183,10 @@ class CreateAccountSpy: CreateAccount {
     
     func completeWithError(_ error: DomainError) {
         completion?(.failure(error))
+    }
+    
+    func completeWithAccount(_ account: AccountModel) {
+        completion?(.success(account))
     }
 }
 
