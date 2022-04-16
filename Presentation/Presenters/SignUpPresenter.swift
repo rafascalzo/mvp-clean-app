@@ -39,6 +39,7 @@ public final class SignUpPresenter {
             case .failure: self.alertView.showMessage(viewModel: AlertViewModel(title: "Error", message: "Something goes wrong"))
             case .success(_): break
             }
+            self.loadingView.display(viewModel: LoadingViewModel(isLoading: false))
         }
     }
     
