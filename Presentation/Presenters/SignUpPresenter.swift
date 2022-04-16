@@ -30,7 +30,8 @@ public final class SignUpPresenter {
             return
         }
         let createAccountModel = CreateAccountModel(name: viewModel.name!, email: viewModel.email!, password: viewModel.password!, passwordConfirmation: viewModel.passwordConfirmation!)
-        createAccount.create(account: createAccountModel) { result in
+        createAccount.create(account: createAccountModel) {[weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure: self.alertView.showMessage(viewModel: AlertViewModel(title: "Error", message: "Something goes wrong"))
             case .success(_): break
