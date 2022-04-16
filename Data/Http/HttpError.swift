@@ -9,5 +9,6 @@ import Foundation
 import CoreData
 
 public enum HttpError: Error {
+    
     case noConnectivity, badRequest, serverError, unauthorized, forbidden
 }

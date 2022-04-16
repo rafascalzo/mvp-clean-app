@@ -26,6 +26,5 @@ public struct CreateAccountModel: Model {
         self.email = email
         self.password = password
         self.passwordConfirmation = passwordConfirmation
-        
     }
 }

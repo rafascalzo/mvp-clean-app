@@ -33,7 +33,7 @@ public final class SignUpPresenter {
         createAccount.create(account: createAccountModel) { result in
             switch result {
             case .failure: self.alertView.showMessage(viewModel: AlertViewModel(title: "Error", message: "Something goes wrong"))
-            case .success(let account): break
+            case .success(_): break
             }
         }
     }
