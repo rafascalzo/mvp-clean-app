@@ -94,14 +94,14 @@ class SignUpPresenterTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
     
-    func test_signUp_should_call_create_account_with_correct_values() {
+    func test_signup_should_call_create_account_with_correct_values() {
         let createAccountSpy = CreateAccountSpy()
         let sut = makeSut(createAccount: createAccountSpy)
         sut.signUp(viewModel: makeSignUpViewModel())
         XCTAssertEqual(createAccountSpy.createAccountModel, makeCreateAccountModel())
     }
     
-    func test_signUp_should_show_error_message_if_create_account_fails() {
+    func test_signup_should_show_error_message_if_create_account_fails() {
         let alertViewSpy = AlertViewSpy()
         let createAccountSpy = CreateAccountSpy()
         let sut = makeSut(alertView: alertViewSpy, createAccount: createAccountSpy)
@@ -115,9 +115,10 @@ class SignUpPresenterTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
     
-    func test_signUp_should_show_loading_before_call_create_account() {
+    func test_signup_should_show_loading_before_and_after_call_create_account() {
         let loadingViewSpy = LoadingViewSpy()
-        let sut = makeSut(loadingView: loadingViewSpy)
+        let createAccountSpy = CreateAccountSpy()
+        let sut = makeSut(createAccount: createAccountSpy, loadingView: loadingViewSpy)
         let exp = expectation(description: "waiting")
         loadingViewSpy.observe { viewModel in
             XCTAssertEqual(viewModel, LoadingViewModel(isLoading: true))
@@ -125,6 +126,13 @@ class SignUpPresenterTests: XCTestCase {
         }
         sut.signUp(viewModel: makeSignUpViewModel())
         wait(for: [exp], timeout: 1)
+        let exp2 = expectation(description: "waiting2")
+        loadingViewSpy.observe { viewModel in
+            XCTAssertEqual(viewModel, LoadingViewModel(isLoading: false))
+            exp2.fulfill()
+        }
+        createAccountSpy.completeWithError(.unexpected)
+        wait(for: [exp2], timeout: 1)
     }
 }
 
