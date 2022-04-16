@@ -22,6 +22,7 @@ public final class SignUpPresenter {
             try validate(viewModel: viewModel)
         } catch let error as ValidationError {
             alertView.showMessage(viewModel: AlertViewModel(title: "Validation failed", message: error.message))
+            return
         } catch {
             return
         }
@@ -38,8 +39,10 @@ public final class SignUpPresenter {
             throw ValidationError.required_password_confirmation
         } else if viewModel.password != viewModel.passwordConfirmation {
             throw ValidationError.password_not_match
+        } else if !emailValidator.isValid(email: viewModel.email!) {
+            throw ValidationError.invalid_email
         }
-        _ = emailValidator.isValid(email: viewModel.email!)
+        
     }
 }
 
@@ -60,7 +63,7 @@ public struct SignUpViewModel {
 
 enum ValidationError: LocalizedError {
     
-    case required_name, required_email, required_password, required_password_confirmation, password_not_match
+    case required_name, required_email, required_password, required_password_confirmation, password_not_match, invalid_email
     
     var message: String {
         switch self {
@@ -69,6 +72,7 @@ enum ValidationError: LocalizedError {
         case .required_password: return "Password is required"
         case .required_password_confirmation: return "Password confirmation is required"
         case .password_not_match: return "Password not match"
+        case .invalid_email: return "Invalid email"
         }
     }
 }
