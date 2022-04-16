@@ -6,15 +6,18 @@
 //
 
 import Foundation
+import Domain
 
 public final class SignUpPresenter {
     
     private let alertView: AlertView
     private let emailValidator: EmailValidator
+    private let createAccount: CreateAccount
     
-    public init(alertView: AlertView, emailValidator: EmailValidator) {
+    public init(alertView: AlertView, emailValidator: EmailValidator, createAccount: CreateAccount) {
         self.alertView = alertView
         self.emailValidator = emailValidator
+        self.createAccount = createAccount
     }
     
     public func signUp(viewModel: SignUpViewModel) {
@@ -25,6 +28,13 @@ public final class SignUpPresenter {
             return
         } catch {
             return
+        }
+        let createAccountModel = CreateAccountModel(name: viewModel.name!, email: viewModel.email!, password: viewModel.password!, passwordConfirmation: viewModel.passwordConfirmation!)
+        createAccount.create(account: createAccountModel) { result in
+            switch result {
+            case .failure: self.alertView.showMessage(viewModel: AlertViewModel(title: "Error", message: "Something goes wrong"))
+            case .success(let account): break
+            }
         }
     }
     
