@@ -43,7 +43,7 @@ class SignUpPresenterTests: XCTestCase {
         let alertViewSpy = AlertViewSpy()
         let sut = makeSut(alertView: alertViewSpy)
         sut.signUp(viewModel: makeSignUpViewModel(passwordConfirmation: "wrong_password"))
-        XCTAssertEqual(alertViewSpy.viewModel, AlertViewModel(title: "Validation failed", message: "Password not match"))
+        XCTAssertEqual(alertViewSpy.viewModel, makeInvalidAlertViewModel(message: "Password not match"))
     }
     
     func test_signup_should_show_call_email_validator_with_correct_email() {
@@ -60,7 +60,7 @@ class SignUpPresenterTests: XCTestCase {
         let sut = makeSut(alertView: alertViewSpy, emailValidator: emailValidatorSpy)
         emailValidatorSpy.isValid = false
         sut.signUp(viewModel: makeSignUpViewModel(email: "invalid_email@mail.com"))
-        XCTAssertEqual(alertViewSpy.viewModel, AlertViewModel(title: "Validation failed", message: "Invalid email"))
+        XCTAssertEqual(alertViewSpy.viewModel, makeInvalidAlertViewModel(message: "Invalid email"))
     }
 }
 
@@ -77,6 +77,10 @@ extension SignUpPresenterTests {
     
     func makeRequiredAlertViewModel(fieldName: String) -> AlertViewModel {
         return AlertViewModel(title: "Validation failed", message: "\(fieldName) is required")
+    }
+    
+    func makeInvalidAlertViewModel(message: String) -> AlertViewModel {
+        return AlertViewModel(title: "Validation failed", message: message)
     }
 }
 
