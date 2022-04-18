@@ -12,7 +12,7 @@ import Presentation
 class SignUpViewControllerTests: XCTestCase {
 
     func test_loading_is_hidden_on_start() {
-        XCTAssertEqual(makeSut().loadingIndicator?.isAnimating, false)
+        XCTAssertEqual(makeSut().loadingIndicator.isAnimating, false)
     }
     
     func test_sut_implements_loading_view_protocol() {
@@ -22,12 +22,21 @@ class SignUpViewControllerTests: XCTestCase {
     func test_sut_implements_alert_view_protocol() {
         XCTAssertNotNil(makeSut() as AlertView)
     }
+    
+    func test_save_button_calls_signUp_on_tap() {
+        var signUpViewModel: SignUpViewModel?
+        let signUpSpy: (SignUpViewModel) -> Void = { signUpViewModel = $0 }
+        let sut = makeSut(signUp: signUpSpy)
+        sut.saveButton.simulateTap()
+        XCTAssertEqual(signUpViewModel, SignUpViewModel(name: nil, email: nil, password: nil, passwordConfirmation: nil))
+    }
 }
 
 extension SignUpViewControllerTests {
     
-    func makeSut() -> SignUpViewController {
+    func makeSut(signUp: ((SignUpViewModel) -> Void)? = nil) -> SignUpViewController {
         let sut = SignUpViewController()
+        sut.signUp = signUp
         sut.loadViewIfNeeded()
         return sut
     }
