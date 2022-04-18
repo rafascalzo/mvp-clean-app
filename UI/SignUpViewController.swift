@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Presentation
 
 final class SignUpViewController: UIViewController {
     
@@ -25,5 +26,16 @@ final class SignUpViewController: UIViewController {
         loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         loadingIndicator.widthAnchor.constraint(equalToConstant: 20).isActive = true
         loadingIndicator.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    }
+}
+
+extension SignUpViewController: LoadingView {
+    
+    func display(viewModel: LoadingViewModel) {
+        if viewModel.isLoading {
+            loadingIndicator.startAnimating()
+        } else {
+            loadingIndicator.stopAnimating()
+        }
     }
 }
