@@ -22,10 +22,12 @@ final class SignUpViewController: UIViewController {
         loadingIndicator = UIActivityIndicatorView(style: .medium)
         loadingIndicator.hidesWhenStopped = true
         view.addSubview(loadingIndicator)
-        loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        loadingIndicator.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        loadingIndicator.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        var constraints = [NSLayoutConstraint]()
+        constraints.append(loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor))
+        constraints.append(loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor))
+        constraints.append(loadingIndicator.widthAnchor.constraint(equalToConstant: 20))
+        constraints.append(loadingIndicator.heightAnchor.constraint(equalToConstant: 20))
+        NSLayoutConstraint.activate(constraints)
     }
 }
 
