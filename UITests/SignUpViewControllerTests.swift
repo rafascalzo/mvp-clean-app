@@ -28,7 +28,7 @@ class SignUpViewControllerTests: XCTestCase {
         let signUpSpy: (SignUpViewModel) -> Void = { signUpViewModel = $0 }
         let sut = makeSut(signUp: signUpSpy)
         sut.saveButton.simulateTap()
-        XCTAssertEqual(signUpViewModel, SignUpViewModel(name: nil, email: nil, password: nil, passwordConfirmation: nil))
+        XCTAssertEqual(signUpViewModel, SignUpViewModel(name: sut.nameTextField.text, email: sut.emailTextField.text, password: sut.passwordTextField.text, passwordConfirmation: sut.passwordConfirmationTextField.text))
     }
 }
 

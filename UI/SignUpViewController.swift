@@ -12,6 +12,10 @@ import Presentation
 final class SignUpViewController: UIViewController {
     
     var loadingIndicator: UIActivityIndicatorView!
+    var nameTextField: UITextField!
+    var emailTextField: UITextField!
+    var passwordTextField: UITextField!
+    var passwordConfirmationTextField: UITextField!
     var saveButton: UIButton!
     var signUp: ((SignUpViewModel) -> Void)?
     
@@ -20,8 +24,15 @@ final class SignUpViewController: UIViewController {
         setupView()
     }
     
-    @objc private func saveButtonDidTapped() {
-        signUp?(SignUpViewModel(name: nil, email: nil, password: nil, passwordConfirmation: nil))
+    func configureComponents() {
+        loadingIndicator = UIActivityIndicatorView(style: .medium)
+        loadingIndicator.hidesWhenStopped = true
+        nameTextField = UITextField()
+        emailTextField = UITextField()
+        passwordTextField = UITextField()
+        passwordConfirmationTextField = UITextField()
+        saveButton = UIButton()
+        saveButton.addTarget(self, action: #selector(saveButtonDidTapped), for: .touchUpInside)
     }
     
     func setupView() {
@@ -37,15 +48,12 @@ final class SignUpViewController: UIViewController {
         constraints.append(saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor))
         constraints.append(saveButton.heightAnchor.constraint(equalToConstant: 30))
         constraints.append(saveButton.widthAnchor.constraint(equalToConstant: 30))
-        
         NSLayoutConstraint.activate(constraints)
     }
     
-    func configureComponents() {
-        loadingIndicator = UIActivityIndicatorView(style: .medium)
-        loadingIndicator.hidesWhenStopped = true
-        saveButton = UIButton()
-        saveButton.addTarget(self, action: #selector(saveButtonDidTapped), for: .touchUpInside)
+    @objc private func saveButtonDidTapped() {
+        let viewModel = SignUpViewModel(name: nameTextField.text, email: emailTextField.text, password: passwordTextField.text, passwordConfirmation: passwordConfirmationTextField.text)
+        signUp?(viewModel)
     }
 }
 
