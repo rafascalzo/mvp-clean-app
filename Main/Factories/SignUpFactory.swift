@@ -14,4 +14,14 @@ import Infra
 
 class SignUpFactory {
     
+    static func makeController() -> SignUpViewController {
+        let controller = SignUpViewController()
+        let emailValidatorAdapter = EmailValidatorAdapter()
+        let alamofireAdapter = AlamofireAdapter()
+        let url = URL(string: "https://clean-node-api.herokuapp.com/api/signup")!
+        let remoteCreateAccount = RemoteCreateAccount(url: url, httpClientPost: alamofireAdapter)
+        let presenter = SignUpPresenter(alertView: controller, emailValidator: emailValidatorAdapter, createAccount: remoteCreateAccount, loadingView: controller)
+        controller.signUp = presenter.signUp
+        return controller
+    }
 }

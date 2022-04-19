@@ -17,7 +17,7 @@ public final class SignUpViewController: UIViewController {
     var passwordTextField: UITextField!
     var passwordConfirmationTextField: UITextField!
     var saveButton: UIButton!
-    var signUp: ((SignUpViewModel) -> Void)?
+    public var signUp: ((SignUpViewModel) -> Void)?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +25,7 @@ public final class SignUpViewController: UIViewController {
     }
     
     func setupView() {
-        loadingIndicator = UIActivityIndicatorView(style: .medium)
-        loadingIndicator.hidesWhenStopped = true
+        view.backgroundColor = .white
         nameTextField = UITextField()
         nameTextField.placeholder = "Name"
         emailTextField = UITextField()
@@ -37,7 +36,12 @@ public final class SignUpViewController: UIViewController {
         passwordConfirmationTextField.placeholder = "Password confirmation"
         saveButton = UIButton()
         saveButton.layer.cornerRadius = 4
+        saveButton.setTitle("Sign Up", for: .normal)
+        saveButton.backgroundColor = .lightGray
         saveButton.addTarget(self, action: #selector(saveButtonDidTapped), for: .touchUpInside)
+        loadingIndicator = UIActivityIndicatorView(style: .medium)
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
         applyConstraints()
         hideKeyboardOnTap()
     }
@@ -49,31 +53,37 @@ public final class SignUpViewController: UIViewController {
     func applyConstraints() {
         var constraints = [NSLayoutConstraint]()
         view.addSubview(nameTextField)
+        nameTextField.translatesAutoresizingMaskIntoConstraints = false
         constraints.append(nameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20))
         constraints.append(nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor))
         constraints.append(nameTextField.heightAnchor.constraint(equalToConstant: 50))
-        constraints.append(nameTextField.widthAnchor.constraint(equalToConstant: 130))
+        constraints.append(nameTextField.widthAnchor.constraint(equalToConstant: 240))
         view.addSubview(emailTextField)
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
         constraints.append(emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20))
         constraints.append(emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor))
         constraints.append(emailTextField.heightAnchor.constraint(equalToConstant: 50))
-        constraints.append(emailTextField.widthAnchor.constraint(equalToConstant: 120))
+        constraints.append(emailTextField.widthAnchor.constraint(equalToConstant: 240))
         view.addSubview(passwordTextField)
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         constraints.append(passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20))
         constraints.append(passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor))
         constraints.append(passwordTextField.heightAnchor.constraint(equalToConstant: 50))
-        constraints.append(passwordTextField.widthAnchor.constraint(equalToConstant: 120))
+        constraints.append(passwordTextField.widthAnchor.constraint(equalToConstant: 240))
         view.addSubview(passwordConfirmationTextField)
+        passwordConfirmationTextField.translatesAutoresizingMaskIntoConstraints = false
         constraints.append(passwordConfirmationTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20))
         constraints.append(passwordConfirmationTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor))
         constraints.append(passwordConfirmationTextField.heightAnchor.constraint(equalToConstant: 50))
-        constraints.append(passwordConfirmationTextField.widthAnchor.constraint(equalToConstant: 120))
+        constraints.append(passwordConfirmationTextField.widthAnchor.constraint(equalToConstant: 240))
         view.addSubview(saveButton)
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
         constraints.append(saveButton.topAnchor.constraint(equalTo: passwordConfirmationTextField.bottomAnchor, constant: 20))
         constraints.append(saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor))
         constraints.append(saveButton.heightAnchor.constraint(equalToConstant: 60))
-        constraints.append(saveButton.widthAnchor.constraint(equalToConstant: 120))
+        constraints.append(saveButton.widthAnchor.constraint(equalToConstant: 240))
         saveButton.addSubview(loadingIndicator)
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
         constraints.append(loadingIndicator.trailingAnchor.constraint(equalTo: loadingIndicator.superview!.trailingAnchor))
         constraints.append(loadingIndicator.centerYAnchor.constraint(equalTo: loadingIndicator.superview!.centerYAnchor))
         constraints.append(loadingIndicator.widthAnchor.constraint(equalToConstant: 25))
