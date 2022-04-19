@@ -24,7 +24,7 @@ final class SignUpViewController: UIViewController {
         setupView()
     }
     
-    func configureComponents() {
+    func setupView() {
         loadingIndicator = UIActivityIndicatorView(style: .medium)
         loadingIndicator.hidesWhenStopped = true
         nameTextField = UITextField()
@@ -36,12 +36,12 @@ final class SignUpViewController: UIViewController {
         passwordConfirmationTextField = UITextField()
         passwordConfirmationTextField.placeholder = "Password confirmation"
         saveButton = UIButton()
-        saveButton.layer.cornerRadius = 8
+        saveButton.layer.cornerRadius = 4
         saveButton.addTarget(self, action: #selector(saveButtonDidTapped), for: .touchUpInside)
+        applyConstraints()
     }
     
-    func setupView() {
-        configureComponents()
+    func applyConstraints() {
         var constraints = [NSLayoutConstraint]()
         view.addSubview(nameTextField)
         constraints.append(nameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20))
