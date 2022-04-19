@@ -39,6 +39,11 @@ final class SignUpViewController: UIViewController {
         saveButton.layer.cornerRadius = 4
         saveButton.addTarget(self, action: #selector(saveButtonDidTapped), for: .touchUpInside)
         applyConstraints()
+        hideKeyboardOnTap()
+    }
+    
+    @objc private func hideKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     func applyConstraints() {
