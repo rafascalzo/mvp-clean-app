@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Presentation
 
-final class SignUpViewController: UIViewController {
+public final class SignUpViewController: UIViewController {
     
     var loadingIndicator: UIActivityIndicatorView!
     var nameTextField: UITextField!
@@ -19,7 +19,7 @@ final class SignUpViewController: UIViewController {
     var saveButton: UIButton!
     var signUp: ((SignUpViewModel) -> Void)?
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
@@ -89,7 +89,7 @@ final class SignUpViewController: UIViewController {
 
 extension SignUpViewController: LoadingView {
     
-    func display(viewModel: LoadingViewModel) {
+    public func display(viewModel: LoadingViewModel) {
         if viewModel.isLoading {
             view.isUserInteractionEnabled = false
             loadingIndicator.startAnimating()
@@ -102,7 +102,7 @@ extension SignUpViewController: LoadingView {
 
 extension SignUpViewController: AlertView {
     
-    func showMessage(viewModel: AlertViewModel) {
+    public func showMessage(viewModel: AlertViewModel) {
         let alert = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)

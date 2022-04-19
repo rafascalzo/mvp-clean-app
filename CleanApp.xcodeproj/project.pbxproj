@@ -33,12 +33,24 @@
 		C50688CF280E488E00E658B9 /* EmailValidatorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50688CE280E488E00E658B9 /* EmailValidatorAdapter.swift */; };
 		C50688D7280E84E100E658B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50688D6280E84E100E658B9 /* AppDelegate.swift */; };
 		C50688D9280E84E100E658B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50688D8280E84E100E658B9 /* SceneDelegate.swift */; };
-		C50688DB280E84E100E658B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50688DA280E84E100E658B9 /* ViewController.swift */; };
 		C50688E0280E84E500E658B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C50688DF280E84E500E658B9 /* Assets.xcassets */; };
 		C50688E3280E84E500E658B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C50688E1280E84E500E658B9 /* LaunchScreen.storyboard */; };
 		C50688EE280E84E600E658B9 /* MainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50688ED280E84E600E658B9 /* MainTests.swift */; };
 		C50688F8280E84E600E658B9 /* MainUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50688F7280E84E600E658B9 /* MainUITests.swift */; };
 		C50688FA280E84E600E658B9 /* MainUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50688F9280E84E600E658B9 /* MainUITestsLaunchTests.swift */; };
+		C5068906280E863200E658B9 /* SignUpFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5068905280E863200E658B9 /* SignUpFactory.swift */; };
+		C5068909280E8ADC00E658B9 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB6C5CAB27B6291900A1FE9E /* Data.framework */; };
+		C506890A280E8ADC00E658B9 /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB6C5CAB27B6291900A1FE9E /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C506890D280E8ADC00E658B9 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB6C5C9927B6042500A1FE9E /* Domain.framework */; platformFilter = ios; };
+		C506890E280E8ADC00E658B9 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB6C5C9927B6042500A1FE9E /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5068911280E8ADC00E658B9 /* Infra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C53ACC1C28071153002F5D56 /* Infra.framework */; };
+		C5068912280E8ADC00E658B9 /* Infra.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C53ACC1C28071153002F5D56 /* Infra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5068915280E8ADC00E658B9 /* Presentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C580C9FE2809FB9200EB834B /* Presentation.framework */; };
+		C5068916280E8ADC00E658B9 /* Presentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C580C9FE2809FB9200EB834B /* Presentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5068919280E8ADC00E658B9 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C506887E280B9F3300E658B9 /* UI.framework */; platformFilter = ios; };
+		C506891A280E8ADC00E658B9 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C506887E280B9F3300E658B9 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C506891D280E8ADC00E658B9 /* Validation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C50688B2280E442C00E658B9 /* Validation.framework */; platformFilter = ios; };
+		C506891E280E8ADC00E658B9 /* Validation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C50688B2280E442C00E658B9 /* Validation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C53ACBFA280127E5002F5D56 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBF9280127E5002F5D56 /* Model.swift */; };
 		C53ACBFC2801297D002F5D56 /* RemoteCreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBFB2801297D002F5D56 /* RemoteCreateAccount.swift */; };
 		C53ACBFE28012A11002F5D56 /* HttpClientPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBFD28012A11002F5D56 /* HttpClientPost.swift */; };
@@ -123,6 +135,48 @@
 			proxyType = 1;
 			remoteGlobalIDString = C50688D3280E84E100E658B9;
 			remoteInfo = Main;
+		};
+		C506890B280E8ADC00E658B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB6C5C6927B602F000A1FE9E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB6C5CAA27B6291900A1FE9E;
+			remoteInfo = Data;
+		};
+		C506890F280E8ADC00E658B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB6C5C6927B602F000A1FE9E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB6C5C9827B6042500A1FE9E;
+			remoteInfo = Domain;
+		};
+		C5068913280E8ADC00E658B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB6C5C6927B602F000A1FE9E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C53ACC1B28071153002F5D56;
+			remoteInfo = Infra;
+		};
+		C5068917280E8ADC00E658B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB6C5C6927B602F000A1FE9E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C580C9FD2809FB9200EB834B;
+			remoteInfo = Presentation;
+		};
+		C506891B280E8ADC00E658B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB6C5C6927B602F000A1FE9E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C506887D280B9F3300E658B9;
+			remoteInfo = UI;
+		};
+		C506891F280E8ADD00E658B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB6C5C6927B602F000A1FE9E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C50688B1280E442C00E658B9;
+			remoteInfo = Validation;
 		};
 		C53ACC2728071154002F5D56 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -212,6 +266,22 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C5068921280E8ADD00E658B9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C506890E280E8ADC00E658B9 /* Domain.framework in Embed Frameworks */,
+				C506891A280E8ADC00E658B9 /* UI.framework in Embed Frameworks */,
+				C506890A280E8ADC00E658B9 /* Data.framework in Embed Frameworks */,
+				C506891E280E8ADC00E658B9 /* Validation.framework in Embed Frameworks */,
+				C5068916280E8ADC00E658B9 /* Presentation.framework in Embed Frameworks */,
+				C5068912280E8ADC00E658B9 /* Infra.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C53ACC3728071296002F5D56 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,7 +342,6 @@
 		C50688D4280E84E100E658B9 /* Main.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Main.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50688D6280E84E100E658B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C50688D8280E84E100E658B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C50688DA280E84E100E658B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C50688DF280E84E500E658B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C50688E2280E84E500E658B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C50688E4280E84E500E658B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -281,6 +350,7 @@
 		C50688F3280E84E600E658B9 /* MainUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MainUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50688F7280E84E600E658B9 /* MainUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUITests.swift; sourceTree = "<group>"; };
 		C50688F9280E84E600E658B9 /* MainUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C5068905280E863200E658B9 /* SignUpFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFactory.swift; sourceTree = "<group>"; };
 		C53ACBF9280127E5002F5D56 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C53ACBFB2801297D002F5D56 /* RemoteCreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCreateAccount.swift; sourceTree = "<group>"; };
 		C53ACBFD28012A11002F5D56 /* HttpClientPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientPost.swift; sourceTree = "<group>"; };
@@ -353,6 +423,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C506890D280E8ADC00E658B9 /* Domain.framework in Frameworks */,
+				C5068919280E8ADC00E658B9 /* UI.framework in Frameworks */,
+				C5068909280E8ADC00E658B9 /* Data.framework in Frameworks */,
+				C506891D280E8ADC00E658B9 /* Validation.framework in Frameworks */,
+				C5068915280E8ADC00E658B9 /* Presentation.framework in Frameworks */,
+				C5068911280E8ADC00E658B9 /* Infra.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,9 +659,9 @@
 		C50688D5280E84E100E658B9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C5068904280E861B00E658B9 /* Factories */,
 				C50688D6280E84E100E658B9 /* AppDelegate.swift */,
 				C50688D8280E84E100E658B9 /* SceneDelegate.swift */,
-				C50688DA280E84E100E658B9 /* ViewController.swift */,
 				C50688DF280E84E500E658B9 /* Assets.xcassets */,
 				C50688E1280E84E500E658B9 /* LaunchScreen.storyboard */,
 				C50688E4280E84E500E658B9 /* Info.plist */,
@@ -608,6 +684,14 @@
 				C50688F9280E84E600E658B9 /* MainUITestsLaunchTests.swift */,
 			);
 			path = MainUITests;
+			sourceTree = "<group>";
+		};
+		C5068904280E861B00E658B9 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				C5068905280E863200E658B9 /* SignUpFactory.swift */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 		C53ACBFF28012C1A002F5D56 /* UseCases */ = {
@@ -787,6 +871,9 @@
 		FB6C5C6827B602F000A1FE9E = {
 			isa = PBXGroup;
 			children = (
+				C50688D5280E84E100E658B9 /* Main */,
+				C50688EC280E84E500E658B9 /* MainTests */,
+				C50688F6280E84E600E658B9 /* MainUITests */,
 				FB6C5C9A27B6042500A1FE9E /* Domain */,
 				FB6C5CAC27B6291900A1FE9E /* Data */,
 				FB6C5CB827B6291900A1FE9E /* DataTests */,
@@ -799,9 +886,6 @@
 				C506888B280B9F3300E658B9 /* UITests */,
 				C50688B3280E442C00E658B9 /* Validation */,
 				C50688BF280E442C00E658B9 /* ValidationTests */,
-				C50688D5280E84E100E658B9 /* Main */,
-				C50688EC280E84E500E658B9 /* MainTests */,
-				C50688F6280E84E600E658B9 /* MainUITests */,
 				FB6C5C7327B602F100A1FE9E /* Products */,
 				FB6C5CC527B629A000A1FE9E /* Frameworks */,
 			);
@@ -1000,10 +1084,17 @@
 				C50688D0280E84E100E658B9 /* Sources */,
 				C50688D1280E84E100E658B9 /* Frameworks */,
 				C50688D2280E84E100E658B9 /* Resources */,
+				C5068921280E8ADD00E658B9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C506890C280E8ADC00E658B9 /* PBXTargetDependency */,
+				C5068910280E8ADC00E658B9 /* PBXTargetDependency */,
+				C5068914280E8ADC00E658B9 /* PBXTargetDependency */,
+				C5068918280E8ADC00E658B9 /* PBXTargetDependency */,
+				C506891C280E8ADC00E658B9 /* PBXTargetDependency */,
+				C5068920280E8ADD00E658B9 /* PBXTargetDependency */,
 			);
 			name = Main;
 			productName = Main;
@@ -1452,7 +1543,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C50688DB280E84E100E658B9 /* ViewController.swift in Sources */,
+				C5068906280E863200E658B9 /* SignUpFactory.swift in Sources */,
 				C50688D7280E84E100E658B9 /* AppDelegate.swift in Sources */,
 				C50688D9280E84E100E658B9 /* SceneDelegate.swift in Sources */,
 			);
@@ -1598,6 +1689,39 @@
 			isa = PBXTargetDependency;
 			target = C50688D3280E84E100E658B9 /* Main */;
 			targetProxy = C50688F4280E84E600E658B9 /* PBXContainerItemProxy */;
+		};
+		C506890C280E8ADC00E658B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB6C5CAA27B6291900A1FE9E /* Data */;
+			targetProxy = C506890B280E8ADC00E658B9 /* PBXContainerItemProxy */;
+		};
+		C5068910280E8ADC00E658B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = FB6C5C9827B6042500A1FE9E /* Domain */;
+			targetProxy = C506890F280E8ADC00E658B9 /* PBXContainerItemProxy */;
+		};
+		C5068914280E8ADC00E658B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C53ACC1B28071153002F5D56 /* Infra */;
+			targetProxy = C5068913280E8ADC00E658B9 /* PBXContainerItemProxy */;
+		};
+		C5068918280E8ADC00E658B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C580C9FD2809FB9200EB834B /* Presentation */;
+			targetProxy = C5068917280E8ADC00E658B9 /* PBXContainerItemProxy */;
+		};
+		C506891C280E8ADC00E658B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = C506887D280B9F3300E658B9 /* UI */;
+			targetProxy = C506891B280E8ADC00E658B9 /* PBXContainerItemProxy */;
+		};
+		C5068920280E8ADD00E658B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = C50688B1280E442C00E658B9 /* Validation */;
+			targetProxy = C506891F280E8ADD00E658B9 /* PBXContainerItemProxy */;
 		};
 		C53ACC2828071154002F5D56 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
