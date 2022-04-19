@@ -24,6 +24,7 @@
 		C506889E280BA53A00E658B9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C506889D280BA53A00E658B9 /* SignUpViewController.swift */; };
 		C50688A6280E1C9F00E658B9 /* UITestsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50688A5280E1C9F00E658B9 /* UITestsExtensions.swift */; };
 		C50688A9280E3AA400E658B9 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50688A8280E3AA400E658B9 /* UIViewControllerExtensions.swift */; };
+		C50688AC280E3D9A00E658B9 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50688AB280E3D9A00E658B9 /* Storyboarded.swift */; };
 		C53ACBFA280127E5002F5D56 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBF9280127E5002F5D56 /* Model.swift */; };
 		C53ACBFC2801297D002F5D56 /* RemoteCreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBFB2801297D002F5D56 /* RemoteCreateAccount.swift */; };
 		C53ACBFE28012A11002F5D56 /* HttpClientPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBFD28012A11002F5D56 /* HttpClientPost.swift */; };
@@ -209,6 +210,7 @@
 		C506889D280BA53A00E658B9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C50688A5280E1C9F00E658B9 /* UITestsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestsExtensions.swift; sourceTree = "<group>"; };
 		C50688A8280E3AA400E658B9 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		C50688AB280E3D9A00E658B9 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		C53ACBF9280127E5002F5D56 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C53ACBFB2801297D002F5D56 /* RemoteCreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCreateAccount.swift; sourceTree = "<group>"; };
 		C53ACBFD28012A11002F5D56 /* HttpClientPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientPost.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 		C506887F280B9F3300E658B9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C50688AA280E3D7B00E658B9 /* Helpers */,
 				C50688A7280E3A8C00E658B9 /* Extensions */,
 				C50688A0280E1BCD00E658B9 /* Scenes */,
 				C5068881280B9F3300E658B9 /* UI.docc */,
@@ -443,6 +446,14 @@
 				C50688A8280E3AA400E658B9 /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C50688AA280E3D7B00E658B9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C50688AB280E3D9A00E658B9 /* Storyboarded.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		C53ACBFF28012C1A002F5D56 /* UseCases */ = {
@@ -1086,6 +1097,7 @@
 				C506889E280BA53A00E658B9 /* SignUpViewController.swift in Sources */,
 				C50688A9280E3AA400E658B9 /* UIViewControllerExtensions.swift in Sources */,
 				C5068882280B9F3300E658B9 /* UI.docc in Sources */,
+				C50688AC280E3D9A00E658B9 /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
