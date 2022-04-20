@@ -43,7 +43,6 @@
 		C50688EE280E84E600E658B9 /* SignUpIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50688ED280E84E600E658B9 /* SignUpIntegrationTests.swift */; };
 		C50688F8280E84E600E658B9 /* MainUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50688F7280E84E600E658B9 /* MainUITests.swift */; };
 		C50688FA280E84E600E658B9 /* MainUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50688F9280E84E600E658B9 /* MainUITestsLaunchTests.swift */; };
-		C5068906280E863200E658B9 /* ControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5068905280E863200E658B9 /* ControllerFactory.swift */; };
 		C5068909280E8ADC00E658B9 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB6C5CAB27B6291900A1FE9E /* Data.framework */; };
 		C506890A280E8ADC00E658B9 /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB6C5CAB27B6291900A1FE9E /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C506890D280E8ADC00E658B9 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB6C5C9927B6042500A1FE9E /* Domain.framework */; platformFilter = ios; };
@@ -358,7 +357,6 @@
 		C50688F3280E84E600E658B9 /* MainUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MainUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50688F7280E84E600E658B9 /* MainUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUITests.swift; sourceTree = "<group>"; };
 		C50688F9280E84E600E658B9 /* MainUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		C5068905280E863200E658B9 /* ControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFactory.swift; sourceTree = "<group>"; };
 		C53ACBF9280127E5002F5D56 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C53ACBFB2801297D002F5D56 /* RemoteCreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCreateAccount.swift; sourceTree = "<group>"; };
 		C53ACBFD28012A11002F5D56 /* HttpClientPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientPost.swift; sourceTree = "<group>"; };
@@ -715,7 +713,6 @@
 		C5068904280E861B00E658B9 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
-				C5068905280E863200E658B9 /* ControllerFactory.swift */,
 				C502506D280F887300E0C9BC /* UseCaseFactory.swift */,
 			);
 			path = Factories;
@@ -1571,7 +1568,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C502506E280F887300E0C9BC /* UseCaseFactory.swift in Sources */,
-				C5068906280E863200E658B9 /* ControllerFactory.swift in Sources */,
 				C50688D7280E84E100E658B9 /* AppDelegate.swift in Sources */,
 				C50688D9280E84E100E658B9 /* SceneDelegate.swift in Sources */,
 				C5025076280FD21700E0C9BC /* WeakVarProxy.swift in Sources */,
