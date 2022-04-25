@@ -56,6 +56,7 @@
 		C506891A280E8ADC00E658B9 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C506887E280B9F3300E658B9 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C506891D280E8ADC00E658B9 /* Validation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C50688B2280E442C00E658B9 /* Validation.framework */; platformFilter = ios; };
 		C506891E280E8ADC00E658B9 /* Validation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C50688B2280E442C00E658B9 /* Validation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5280B212816575A005CD0BC /* MainDispatchQueueDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5280B202816575A005CD0BC /* MainDispatchQueueDecorator.swift */; };
 		C53ACBFA280127E5002F5D56 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBF9280127E5002F5D56 /* Model.swift */; };
 		C53ACBFC2801297D002F5D56 /* RemoteCreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBFB2801297D002F5D56 /* RemoteCreateAccount.swift */; };
 		C53ACBFE28012A11002F5D56 /* HttpClientPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ACBFD28012A11002F5D56 /* HttpClientPost.swift */; };
@@ -362,6 +363,7 @@
 		C50688F3280E84E600E658B9 /* MainUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MainUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50688F7280E84E600E658B9 /* MainUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUITests.swift; sourceTree = "<group>"; };
 		C50688F9280E84E600E658B9 /* MainUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C5280B202816575A005CD0BC /* MainDispatchQueueDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDispatchQueueDecorator.swift; sourceTree = "<group>"; };
 		C53ACBF9280127E5002F5D56 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C53ACBFB2801297D002F5D56 /* RemoteCreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCreateAccount.swift; sourceTree = "<group>"; };
 		C53ACBFD28012A11002F5D56 /* HttpClientPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientPost.swift; sourceTree = "<group>"; };
@@ -696,6 +698,7 @@
 		C50688D5280E84E100E658B9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C5280B1F28165743005CD0BC /* Decorators */,
 				C5025077280FD76600E0C9BC /* Env */,
 				C5025074280FD1FF00E0C9BC /* Proxies */,
 				C502506F280FC4E000E0C9BC /* Composers */,
@@ -732,6 +735,14 @@
 				C502506D280F887300E0C9BC /* UseCaseFactory.swift */,
 			);
 			path = Factories;
+			sourceTree = "<group>";
+		};
+		C5280B1F28165743005CD0BC /* Decorators */ = {
+			isa = PBXGroup;
+			children = (
+				C5280B202816575A005CD0BC /* MainDispatchQueueDecorator.swift */,
+			);
+			path = Decorators;
 			sourceTree = "<group>";
 		};
 		C53ACBFF28012C1A002F5D56 /* UseCases */ = {
@@ -1596,6 +1607,7 @@
 				C50688D7280E84E100E658B9 /* AppDelegate.swift in Sources */,
 				C50688D9280E84E100E658B9 /* SceneDelegate.swift in Sources */,
 				C5025076280FD21700E0C9BC /* WeakVarProxy.swift in Sources */,
+				C5280B212816575A005CD0BC /* MainDispatchQueueDecorator.swift in Sources */,
 				C5025071280FC4F200E0C9BC /* SignUpComposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
