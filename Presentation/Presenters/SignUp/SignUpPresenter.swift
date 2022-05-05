@@ -11,20 +11,20 @@ import Domain
 public final class SignUpPresenter {
     
     private let alertView: AlertView
-    private let emailValidator: EmailValidator
     private let createAccount: CreateAccount
     private let loadingView: LoadingView
+    private let validation: Validation
     
-    public init(alertView: AlertView, emailValidator: EmailValidator, createAccount: CreateAccount, loadingView: LoadingView) {
+    public init(alertView: AlertView, createAccount: CreateAccount, loadingView: LoadingView, validation: Validation) {
         self.alertView = alertView
-        self.emailValidator = emailValidator
         self.createAccount = createAccount
         self.loadingView = loadingView
+        self.validation = validation
     }
     
     public func signUp(viewModel: SignUpViewModel) {
         do {
-            try validate(viewModel: viewModel)
+            try validation.validate(data: viewModel.toJson())
         } catch let error as ValidationError {
             alertView.showMessage(viewModel: AlertViewModel(title: "Validation failed", message: error.message))
             return
@@ -41,37 +41,6 @@ public final class SignUpPresenter {
             }
         }
     }
-    
-    private func validate(viewModel: SignUpViewModel) throws {
-        if viewModel.name == nil || viewModel.name?.isEmpty ?? true {
-            throw ValidationError.required_name
-        } else if viewModel.email == nil || viewModel.email?.isEmpty ?? true {
-            throw ValidationError.required_email
-        } else if viewModel.password == nil || viewModel.password?.isEmpty ?? true {
-            throw ValidationError.required_password
-        } else if viewModel.passwordConfirmation == nil || viewModel.passwordConfirmation?.isEmpty ?? true {
-            throw ValidationError.required_password_confirmation
-        } else if viewModel.password != viewModel.passwordConfirmation {
-            throw ValidationError.password_not_match
-        } else if !emailValidator.isValid(email: viewModel.email!) {
-            throw ValidationError.invalid_email
-        }
-        
-    }
 }
 
-enum ValidationError: LocalizedError {
-    
-    case required_name, required_email, required_password, required_password_confirmation, password_not_match, invalid_email
-    
-    var message: String {
-        switch self {
-        case .required_name: return "Name is required"
-        case .required_email: return "Email is required"
-        case .required_password: return "Password is required"
-        case .required_password_confirmation: return "Password confirmation is required"
-        case .password_not_match: return "Password not match"
-        case .invalid_email: return "Invalid email"
-        }
-    }
-}
+

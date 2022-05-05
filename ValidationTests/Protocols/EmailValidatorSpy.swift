@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Presentation
+import Validation
 
 class EmailValidatorSpy: EmailValidator {
     
@@ -16,5 +16,9 @@ class EmailValidatorSpy: EmailValidator {
     func isValid(email: String) -> Bool {
         self.email = email
         return isValid
+    }
+    
+    func simulateInvalidEmail() {
+        isValid = false
     }
 }
